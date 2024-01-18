@@ -1,0 +1,29 @@
+---
+interface Props {
+  colSpan?: number;
+  rowSpan?: number;
+  padding?: string;
+}
+
+const { colSpan = 1, rowSpan, padding = 1.25 } = Astro.props;
+---
+
+<div
+  class="shadow-lg"
+  style={(rowSpan ? `grid-row: span ${rowSpan} / span ${rowSpan};` : "") + `grid-column: span ${colSpan} / span ${colSpan}; `}
+>
+  <div
+    class:list={[
+      "bg-[var(--blue-transparent)]",
+      "h-full",
+      "rounded-xl",
+      "border-solid",
+      "border-[.2rem]",
+      "border-[var(--blue-rgb)]",
+      "shadow-inner",
+    ]}
+    style={`padding: ${padding}rem;`}
+  >
+    <slot />
+  </div>
+</div>
