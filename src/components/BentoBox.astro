@@ -6,15 +6,21 @@ interface Props {
 }
 
 const { colSpan = 1, rowSpan, padding = 1.25 } = Astro.props;
+
+const randomDelay:string = (Math.random() * 5 + 1).toFixed(2);
 ---
 
 <div
-  class="shadow-lg"
+  class="shadow-lg "
   style={(rowSpan ? `grid-row: span ${rowSpan} / span ${rowSpan};` : "") + `grid-column: span ${colSpan} / span ${colSpan}; `}
 >
   <div
     class:list={[
+      "bentobox-inner",
       "bg-[var(--blue-transparent)]",
+      "bg-gradient-to-t",
+      "from--1%",
+      "to-30%",
       "h-full",
       "rounded-xl",
       "border-solid",
@@ -22,8 +28,42 @@ const { colSpan = 1, rowSpan, padding = 1.25 } = Astro.props;
       "border-[var(--blue-rgb)]",
       "shadow-inner",
     ]}
-    style={`padding: ${padding}rem;`}
+    style={`padding: ${padding}rem; animation-delay: -${randomDelay}s; animation-duration: ${randomDelay}s;`}
   >
     <slot />
   </div>
 </div>
+
+<style>
+  @property --opacity {
+    syntax: '<number>'; /* <- defined as type number for the transition to work */
+    initial-value: 0;
+    inherits: false;
+  }
+
+  .bentobox-inner {
+    --opacity: .5;
+    --gradient-from-color : rgba(var(--blue), var(--opacity));
+    --tw-gradient-from: var(--gradient-from-color) var(--tw-gradient-from-position);
+    --tw-gradient-to: var(--blue-transparent) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+    animation-name: heartbeat;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+
+  }
+  .bentobox-inner:hover {
+    --opacity: 1;
+  }
+
+
+  @keyframes heartbeat {
+    0% {
+      --opacity: .5;
+    }
+    100% {
+      --opacity: .9;
+    }
+  }
+</style>

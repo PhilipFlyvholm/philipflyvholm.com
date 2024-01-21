@@ -4,7 +4,7 @@ import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import BentoBox from "../components/BentoBox.astro";
 import "../styles/github-calender.css";
-import GithubCalender from "../components/GithubCalender.astro";
+import GithubBox from "../components/GithubBox.astro";
 ---
 
 <!doctype html>
@@ -48,7 +48,7 @@ import GithubCalender from "../components/GithubCalender.astro";
           <h1>Hallo</h1>
         </BentoBox>
         <BentoBox colSpan={2}>
-          <GithubCalender username="PhilipFlyvholm" />
+          <GithubBox username="PhilipFlyvholm" />
         </BentoBox>
         <BentoBox colSpan={3} padding="0">
           <Footer />
