@@ -55,7 +55,7 @@ function scrapeActivity(container: HTMLElement) {
       .map(({ text, href }) => `<a href="${href}" target="_blank">${text}</a>`)
       .join(", ");
 
-    return `I have made ${contributions} contributions over the last year. Most recently to ${repoText} and ${numOfotherRepos} other repositories`;
+    return `In the past year, I've made ${contributions} contributions to various projects. Most recently to ${repoText} and ${numOfotherRepos} other repositories`;
   } else {
     return `Github activity`;
   }

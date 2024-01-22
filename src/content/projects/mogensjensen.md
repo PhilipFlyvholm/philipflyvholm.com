@@ -4,8 +4,8 @@ description: 'Lorem ipsum dolor sit amet'
 pubDate: '21 jan 2024'
 heroImage: '/project/mogensjensen.png'
 isPost: false
-rowSize: 1
-colSize: 1
+colSize: 3
+rowSize: 3
 scrollHero: true
 type: "Freelance"
 ---

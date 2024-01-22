@@ -13,7 +13,7 @@ const { project } = Astro.props;
   style={`background-image: url("${project.data.heroImage}");`}
 >
   <div
-    class="title-container absolute flex flex-col bottom-0 left-1/2 -translate-x-1/2 mb-2 backdrop-blur text-center px-5 py-2 rounded-full"
+    class="title-container absolute flex flex-col bottom-0 backdrop-blur text-center pl-3 pr-5 py-2 rounded-tr-[1rem]"
   >
     <small class="title m-0 rounded-full text-[var(--orange-rgb)] italic text-xs">
       {project.data.type}

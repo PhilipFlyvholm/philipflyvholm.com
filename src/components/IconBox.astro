@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  name: string;
+  color: string;
+  href: string;
+}
+
+let { name, color, href } = Astro.props;
+---
+
+<a href={href} target="_blank" rel="noopener noreferrer" aria-label=`Link to ${name}`
+  class:list={[
+    "w-full",
+    "h-full",
+    "flex",
+    "justify-center",
+    "items-center",
+    "p-2",
+    "md:aspect-square",
+    "text-white",
+    "hover:text-unset",
+    "transition-all",
+    "duration-300",
+    "cursor-pointer",
+    "hover:scale-125",
+  ]}
+  style={{ backgroundColor: color }}
+>
+  <Icon name={`pajamas:${name}`} size={80} />
+</a>

@@ -7,6 +7,7 @@ import "../styles/github-calender.css";
 import GithubBox from "../components/Github/GithubBox.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import ProjectBox from "../components/Project/ProjectBox.astro";
+import IconBox from "../components/IconBox.astro";
 
 type Project = CollectionEntry<"projects">;
 const projects = (await getCollection("projects")).sort(
@@ -22,91 +23,115 @@ const projects = (await getCollection("projects")).sort(
   </head>
   <body>
     <main>
-      <div class="grid grid-cols-3 gap-4">
-        <BentoBox colSpan={2}>
-          <div class="flex justify-start items-center">
-            <p>
-              Hi, I'm <span class="highlight">Philip</span>! I'm a full stack
-              developer with a passion for creating beautiful and intuitive user
-              interfaces. I'm currently studying my master's degree in Computer
-              Science at IT-University of Copenhagen.
-            </p>
+      <div class="grid grid-cols-5 gap-4">
+        <BentoBox colSpan={3}>
+          <div class="flex h-full flex-row justify-center items-center">
             <img
-              class="w-1/4 h-auto border-solid border-[.2rem] rotate-6"
+              class="w-1/4 h-auto border-solid border-[.2rem] rotate-6 m-2 mr-8"
               src="/pb.jpg"
               alt="Picture of Philip Flyvholm"
             />
+            <div>
+              <h4>Hi, I'm <span class="highlight">Philip</span>!</h4>
+              <p class="m-0">
+                I am a dedicated
+                full-stack developer, driven by a passion for crafting beautiful
+                and intuitive applications. Currently pursuing my master's
+                degree in Computer Science at the IT University of Copenhagen.
+              </p>
+              
+            </div>
           </div>
         </BentoBox>
-        <BentoBox>
+        <BentoBox colSpan={2}>
+          <h5>Project Enthusiast</h5>
           <p>
-            I always have multiple projects going on since I just can't stop
-            creating new projects. I'm interested in <span class="highlight">Web development</span> and
-            <span class="highlight">language parsing</span>.
+            I am constantly engaged in multiple projects, fueled by an
+            insatiable desire to create. My interests lie in the realms of <span
+              class="highlight">web development</span
+            > and <span class="highlight">language parsing</span>.
           </p>
           <h5>My primary tools</h5>
-          <ul>
-            <li class="language-icon typescript">Typescript</li>
-            <li class="language-icon svelte">Svelte</li>
-            <li class="language-icon react">React</li>
-          </ul>
+              <ul class="flex">
+                <li class="language-icon typescript">Typescript</li>
+                <li class="language-icon svelte">Svelte</li>
+                <li class="language-icon react">React</li>
+              </ul>
         </BentoBox>
-        <BentoBox colSpan={2}>
+        <BentoBox colSpan={4}>
           <GithubBox username="PhilipFlyvholm" />
         </BentoBox>
-        <BentoBox colSpan={1} order={3}>
+        <BentoBox colSpan={2} order={3}>
           <p>
             Previously I've worked at:
             <ul>
-              <li><span class="highlight">Lighthouse Visuals I/S (2018-2022):</span> My freelance company, focusing on wordpress sites for small and medium sized businesses.</li>
-              <li><span class="highlight">Nulprocent.dk (2021-2022):</span> Danish alcohol-free alternative webshop.</li>
+              <li>
+                <span class="highlight"
+                  >Lighthouse Visuals I/S (2018-2022):</span
+                > Founded and managed a freelance company specializing in WordPress
+                sites for small and medium-sized businesses.
+              </li>
+              <li>
+                <span class="highlight">Nulprocent.dk (2021-2022):</span> Founded
+                and developed a Danish alcohol-free alternative webshop.
+              </li>
             </ul>
           </p>
         </BentoBox>
+        <BentoBox padding="0" colSpan={1}>
+          <IconBox name="x" color="#000" href="https://twitter.com/PhilipFlyvholm"/>
+        </BentoBox>
+        <BentoBox padding="0" colSpan={1}>
+          <IconBox name="linkedin" color="#0077B5" href="https://www.linkedin.com/in/philipflyvholm/"/>
+        </BentoBox>
         {
-          projects.map((project,i) => (
-            <BentoBox order={i} padding="0" rowSpan={project.data.rowSize ?? 1} colSpan={project.data.colSize ?? 1}>
+          projects.map((project, i) => (
+            <BentoBox
+              order={i}
+              padding="0"
+              rowSpan={project.data.rowSize ?? 1}
+              colSpan={project.data.colSize ?? 2}
+            >
               <ProjectBox project={project} />
             </BentoBox>
           ))
         }
-        <BentoBox order={99} colSpan={3} padding="0">
+        <BentoBox order={99} colSpan={5} padding="0">
           <Footer />
         </BentoBox>
       </div>
     </main>
+    <style>
+      .language-icon {
+        padding: 0rem 0.5rem;
+        border-radius: 0.5rem;
+        margin: 0rem;
+        margin-left: 1rem;
+        position: relative;
+      }
+      .language-icon::before {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: -0.3rem;
+        background-size: 1rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 1rem;
+        width: 1rem;
+        display: block;
+        content: "";
+      }
+      .typescript::before {
+        background-image: url("/languages/typescript.png");
+      }
+      .svelte::before {
+        background-image: url("/languages/svelte.png");
+        background-size: 0.8rem;
+      }
+      .react::before {
+        background-image: url("/languages/react.webp");
+      }
+    </style>
   </body>
 </html>
-
-<style>
-  .language-icon{
-    padding: 0rem 0.5rem;
-    border-radius: 0.5rem;
-    margin: 0rem;
-    margin-left: 1rem;
-    position: relative;
-  }
-  .language-icon::before{
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: -.3rem;
-    background-size: 1rem;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 1rem;
-    width: 1rem;
-    display: block;
-    content: "";
-  }
-  .typescript::before{
-    background-image: url('/languages/typescript.png');
-  }
-  .svelte::before{
-    background-image: url('/languages/svelte.png');
-    background-size: 0.8rem;
-  }
-  .react::before{
-    background-image: url('/languages/react.webp');
-  }
-</style>
