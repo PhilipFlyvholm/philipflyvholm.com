@@ -7,4 +7,5 @@ isPost: false
 rowSize: 1
 colSize: 1
 scrollHero: true
+type: "Freelance"
 ---

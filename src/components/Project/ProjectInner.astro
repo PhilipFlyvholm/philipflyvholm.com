@@ -13,26 +13,26 @@ const { project } = Astro.props;
   style={`background-image: url("${project.data.heroImage}");`}
 >
   <div
-    class="title-container absolute flex flex-col bottom-0 left-1/2 -translate-x-1/2 mb-2 backdrop-blur-xl text-center px-5 py-2 rounded-full"
+    class="title-container absolute flex flex-col bottom-0 left-1/2 -translate-x-1/2 mb-2 backdrop-blur text-center px-5 py-2 rounded-full"
   >
-    <small class="title m-0 rounded-full text-[var(--gray-light-rgb)] text-xs">
-      Project
+    <small class="title m-0 rounded-full text-[var(--orange-rgb)] italic text-xs">
+      {project.data.type}
     </small>
     <p class="title m-0 leading-4">{project.data.title}</p>
   </div>
 </article>
 <style>
   .title-container {
-    background-color: rgba(var(--blue), 0.7);
+    background-color: rgba(var(--blue), 0.8);
+    text-wrap: nowrap;
   }
   .scroll-hero {
     animation: scrollBackground 20s ease-in-out infinite;
     animation-direction: alternate;
-
-    &:hover{
-      animation-play-state: paused;
-      cursor:crosshair;
-    }
+  }
+  .scroll-hero:hover {
+    animation-play-state: paused;
+    cursor: crosshair;
   }
   @media (prefers-reduced-motion) {
     .scroll-hero {

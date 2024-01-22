@@ -6,4 +6,5 @@ heroImage: '/project/ubbe.png'
 isPost: false
 colSize: 1
 scrollHero: true
+type: "Freelance"
 ---

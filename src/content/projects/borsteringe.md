@@ -6,4 +6,5 @@ heroImage: '/project/børsteringe.jpeg'
 isPost: false
 colSize: 2
 rowSize: 2
+type: "Freelance"
 ---

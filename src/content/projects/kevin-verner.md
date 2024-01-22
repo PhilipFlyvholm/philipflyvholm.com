@@ -5,4 +5,5 @@ pubDate: '21 jan 2024'
 heroImage: '/project/kevin-verner.jpeg'
 isPost: false
 colSize: 1
+type: "Freelance"
 ---

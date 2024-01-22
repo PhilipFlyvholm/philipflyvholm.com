@@ -13,6 +13,7 @@ const projects = defineCollection({
 		colSize: z.number().optional(),
 		rowSize: z.number().optional(),
 		scrollHero: z.boolean().optional(),
+		type: z.string(),
 	}),
 });
 
