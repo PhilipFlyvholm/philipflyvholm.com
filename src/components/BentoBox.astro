@@ -11,8 +11,7 @@ const randomDelay:string = (Math.random() * 5 + 1).toFixed(2);
 ---
 
 <div
-  class="shadow-lg "
-  style={(rowSpan ? `grid-row: span ${rowSpan} / span ${rowSpan};` : "") + `grid-column: span ${colSpan} / span ${colSpan}; `}
+  class="shadow-lg bentobox"
 >
   <div
     class:list={[
@@ -27,6 +26,7 @@ const randomDelay:string = (Math.random() * 5 + 1).toFixed(2);
       "border-[.2rem]",
       "border-[var(--blue-rgb)]",
       "shadow-inner",
+      "overflow-hidden"
     ]}
     style={`padding: ${padding}rem; animation-delay: -${randomDelay}s; animation-duration: ${randomDelay}s;`}
   >
@@ -34,11 +34,16 @@ const randomDelay:string = (Math.random() * 5 + 1).toFixed(2);
   </div>
 </div>
 
-<style>
+<style define:vars={{rowSpan, colSpan}}>
   @property --opacity {
     syntax: '<number>'; /* <- defined as type number for the transition to work */
     initial-value: 0;
     inherits: false;
+  }
+
+  .bentobox{
+    grid-row: auto;
+    grid-column: span 3;
   }
 
   .bentobox-inner {
@@ -55,6 +60,18 @@ const randomDelay:string = (Math.random() * 5 + 1).toFixed(2);
   }
   .bentobox-inner:hover {
     --opacity: 1;
+  }
+
+  @media screen and (min-width: 768px) {
+    .bentobox-inner {
+      --tw-gradient-from-position: 0%;
+      --tw-gradient-to-position: 100%;
+    }
+    
+    .bentobox{
+      grid-row: span var(--rowSpan) / span var(--rowSpan);
+      grid-column: span var(--colSpan) / span var(--colSpan);
+    }
   }
 
 

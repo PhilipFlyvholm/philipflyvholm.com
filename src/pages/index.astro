@@ -5,6 +5,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import BentoBox from "../components/BentoBox.astro";
 import "../styles/github-calender.css";
 import GithubBox from "../components/Github/GithubBox.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import ProjectBox from "../components/Project/ProjectBox.astro";
+
+type Project = CollectionEntry<"projects">;
+const projects = (await getCollection("projects")).sort(
+  (a: Project, b: Project) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
 <!doctype html>
@@ -18,9 +26,10 @@ import GithubBox from "../components/Github/GithubBox.astro";
         <BentoBox colSpan={2}>
           <div class="flex justify-start items-center">
             <p>
-              Hi, I'm <span class="highlight">Philip</span>! I'm a full stack developer with a passion for creating beautiful
-			  and intuitive user interfaces. I'm currently studying my master's
-			  degree in Computer Science at IT-University of Copenhagen.
+              Hi, I'm <span class="highlight">Philip</span>! I'm a full stack
+              developer with a passion for creating beautiful and intuitive user
+              interfaces. I'm currently studying my master's degree in Computer
+              Science at IT-University of Copenhagen.
             </p>
             <img
               class="w-1/4 h-auto border-solid border-[.2rem] rotate-6"
@@ -31,8 +40,9 @@ import GithubBox from "../components/Github/GithubBox.astro";
         </BentoBox>
         <BentoBox>
           <p>
-			I always have multiple projects going on since I just can't stop creating new projects
-			I’m interested in Web development and language parsing.
+            I always have multiple projects going on since I just can't stop
+            creating new projects. I’m interested in Web development and
+            language parsing.
           </p>
           <h5>My primary tools</h5>
           <ul class="list-disc">
@@ -41,15 +51,16 @@ import GithubBox from "../components/Github/GithubBox.astro";
             <li>React</li>
           </ul>
         </BentoBox>
-        <BentoBox colSpan={3}>
-          <h1>Hallo</h1>
-        </BentoBox>
-        <BentoBox>
-          <h1>Hallo</h1>
-        </BentoBox>
         <BentoBox colSpan={2}>
           <GithubBox username="PhilipFlyvholm" />
         </BentoBox>
+        {
+          projects.map((project) => (
+            <BentoBox padding="0" colSpan={project.data.colSize ?? 1}>
+              <ProjectBox project={project} />
+            </BentoBox>
+          ))
+        }
         <BentoBox colSpan={3} padding="0">
           <Footer />
         </BentoBox>

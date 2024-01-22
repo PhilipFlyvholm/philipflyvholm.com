@@ -1,0 +1,64 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../FormattedDate.astro";
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+// `post` will match your 'blog' collection schema type
+const { project } = Astro.props;
+---
+
+<article
+  class=`w-full h-full bg-cover bg-center relative min-h-[200px] ${project.data.scrollHero ? "scroll-hero" : ""}`
+  style={`background-image: url("${project.data.heroImage}");`}
+>
+  <div
+    class="title-container absolute flex flex-col bottom-0 left-1/2 -translate-x-1/2 mb-2 backdrop-blur-xl text-center px-5 py-2 rounded-full"
+  >
+    <small class="title m-0 rounded-full text-[var(--gray-light-rgb)] text-xs">
+      Project
+    </small>
+    <p class="title m-0 leading-4">{project.data.title}</p>
+  </div>
+</article>
+<style>
+  .title-container {
+    background-color: rgba(var(--blue), 0.7);
+  }
+  .scroll-hero {
+    animation: scrollBackground 20s ease-in-out infinite;
+    animation-direction: alternate;
+
+    &:hover{
+      animation-play-state: paused;
+      cursor:crosshair;
+    }
+  }
+  @media (prefers-reduced-motion) {
+    .scroll-hero {
+      animation: none;
+      background-position: 50% 0%;
+    }
+  }
+  @keyframes scrollBackground {
+    0% {
+      background-position: 50% 0%;
+    }
+    10% {
+      background-position: 50% 0%;
+    }
+    47% {
+      background-position: 50% 50%;
+    }
+    53% {
+      background-position: 50% 50%;
+    }
+    90% {
+      background-position: 50% 100%;
+    }
+    100% {
+      background-position: 50% 100%;
+    }
+  }
+</style>

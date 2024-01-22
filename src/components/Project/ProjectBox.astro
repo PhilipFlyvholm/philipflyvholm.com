@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ProjectInner from "./ProjectInner.astro";
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+// `post` will match your 'blog' collection schema type
+const { project } = Astro.props;
+---
+
+{
+  project.data.isPost ? (
+    <a href={`/projects/${project.slug}/`}>
+      <ProjectInner project={project}/>
+    </a>
+  ) : (
+    <ProjectInner project={project}/>
+  )
+}
+
+

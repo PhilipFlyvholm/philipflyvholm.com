@@ -10,23 +10,25 @@ const range = (n: number) => Array.from(Array(n).keys());
 
 <div class="github" data-username={username}>
   <p class="github-text">Loading github...</p>
-  <div class="calendar" data-username={username}>
-    <svg viewBox="0 0 52 7">
-      {
-        range(52).map((x) =>
-          range(7).map((y) => (
-            <circle
-              class="day"
-              data-level="0"
-              cx={x + 0.5}
-              cy={y + 0.5}
-              r=".4"
-            />
-          ))
-        )
-      }
-    </svg>
-  </div>
+  <a href={`https://github.com/${username}`} target="_blank">
+    <div class="calendar" data-username={username}>
+      <svg viewBox="0 0 52 7">
+        {
+          range(52).map((x) =>
+            range(7).map((y) => (
+              <circle
+                class="day"
+                data-level="0"
+                cx={x + 0.5}
+                cy={y + 0.5}
+                r=".4"
+              />
+            ))
+          )
+        }
+      </svg>
+    </div>
+  </a>
 </div>
 <style>
   .calendar {
