@@ -55,8 +55,8 @@ const projects = (await getCollection("projects")).sort(
           <GithubBox username="PhilipFlyvholm" />
         </BentoBox>
         {
-          projects.map((project) => (
-            <BentoBox padding="0" colSpan={project.data.colSize ?? 1}>
+          projects.map((project,i) => (
+            <BentoBox padding="0" rowSpan={project.data.rowSize ?? 1} colSpan={project.data.colSize ?? 1}>
               <ProjectBox project={project} />
             </BentoBox>
           ))

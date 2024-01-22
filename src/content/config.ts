@@ -11,6 +11,7 @@ const projects = defineCollection({
 		heroImage: z.string().optional(),
 		isPost: z.boolean(),
 		colSize: z.number().optional(),
+		rowSize: z.number().optional(),
 		scrollHero: z.boolean().optional(),
 	}),
 });
