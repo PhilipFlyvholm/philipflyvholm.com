@@ -1,0 +1,84 @@
+---
+interface Props {
+  username: string;
+}
+
+const { username } = Astro.props;
+
+const range = (n: number) => Array.from(Array(n).keys());
+---
+
+<div class="github" data-username={username}>
+  <p class="github-text">Loading github...</p>
+  <div class="calendar" data-username={username}>
+    <svg viewBox="0 0 52 7">
+      {
+        range(52).map((x) =>
+          range(7).map((y) => (
+            <circle
+              class="day"
+              data-level="0"
+              cx={x + 0.5}
+              cy={y + 0.5}
+              r=".4"
+            />
+          ))
+        )
+      }
+    </svg>
+  </div>
+</div>
+<style>
+  .calendar {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .calendar :global(svg) {
+    width: 100%;
+    height: 100%;
+    resize: both;
+    overflow: auto;
+  }
+  .calendar :global(.day[data-level="0"]) {
+    fill: rgba(255, 255, 255, 0.1);
+  }
+  .calendar :global(.day[data-level="1"]) {
+    fill: #39dd34;
+  }
+  .calendar :global(.day[data-level="2"]) {
+    fill: #45a045;
+  }
+  .calendar :global(.day[data-level="3"]) {
+    fill: #047526;
+  }
+  .calendar :global(.day[data-level="4"]) {
+    fill: #0a4208;
+  }
+</style>
+<script>
+  import { getGithub } from "./GithubScrape";
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const calendarEl = document.querySelector(".calendar") as HTMLElement;
+    if (!calendarEl || !calendarEl.dataset.username) {
+      return;
+    }
+    const githubText = document.querySelector(".github-text");
+    if (!githubText) {
+      return;
+    }
+    const username = calendarEl.dataset.username;
+    if (!username) {
+      return;
+    }
+    getGithub(username).then((data) => {
+      if (data) {
+        calendarEl.innerHTML = data.calendarHTML;
+        githubText.innerHTML = data.text;
+      } else {
+        githubText.innerHTML = "Failed loading github";
+      }
+    });
+  });
+</script>
