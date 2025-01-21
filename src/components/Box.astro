@@ -1,0 +1,20 @@
+---
+interface Props {
+  rowStart?: number;
+  colStart?: number;
+  rowSpan?: number;
+  colSpan?: number;
+  padding?: string;
+}
+const { padding = "p-5", rowSpan = 1, colSpan = 1, colStart, rowStart } = Astro.props;
+---
+
+<div
+  class={`bg-gradient-to-t from-accent to-light border-gray border-[1px] rounded-3xl ${padding} overflow-hidden`}
+  style={{
+    gridRow: `${rowStart ? rowStart : `span ${rowSpan}`} / span ${rowSpan}`,
+    gridColumn: `${colStart ? colStart : `span ${colSpan}`} / span ${colSpan}`,
+  }}
+>
+  <slot />
+</div>

@@ -1,0 +1,54 @@
+<div
+  class="w-full h-full p-5 bg-gradient-to-b from-[#23242D] to-[#0A0B11] MyInfoContainer text-white flex flex-col justify-center items-center"
+>
+  <h1 class="text-5xl text-center font-bold drop-shadow-[0_4px_0_#11131D]">
+    Hallo
+  </h1>
+  <h2
+    class="text-6xl text-center font-bold drop-shadow-[0_4px_0_#11131D] -mb-10 relative z-0"
+  >
+    I'm Philip
+  </h2>
+  <div class="mx-auto h-1/2 lg:h-auto lg:w-1/2 relative z-5 ImageContainer -translate-x-3">
+    <img
+      src="/philipflyvholm_transparent.png"
+      alt="Picture of me"
+      class="w-full"
+    />
+  </div>
+  <p class="relative z-5 text-center -mt-3 text-gray">
+    <span class="text-white">Full-stack developer</span>, driven by a passion for crafting beautiful and intuitive applications. Currently pursuing my master's degree in Computer Science at the IT University of Copenhagen.
+  </p>
+</div>
+
+<style>
+  .MyInfoContainer {
+    background: radial-gradient(
+        65% 65% at 90% -4%,
+        rgba(66, 23, 255, 0.5) 0%,
+        rgba(66, 23, 255, 0) 100%
+      ),
+      radial-gradient(
+        65% 65% at 10% -1%,
+        rgba(29, 85, 228, 0.5) 0%,
+        rgba(29, 85, 228, 0) 100%
+      ),
+      linear-gradient(180deg, #23242d 0%, #0a0b11 100%);
+  }
+
+  .ImageContainer::after {
+    content: "";
+    left: 0;
+    right: 0;
+    position: absolute;
+    width: 286px;
+    height: 113px;
+    left: calc(50% - 286px / 2 + 0.5px);
+    background: radial-gradient(
+      50% 25% at 50% 50%,
+      rgba(13, 14, 20, 1) 0%,
+      rgba(13, 14, 20, 0) 100%
+    );
+    bottom: -25%;
+  }
+</style>

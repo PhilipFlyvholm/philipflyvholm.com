@@ -1,0 +1,129 @@
+---
+import { Icon } from "astro-icon/components";
+const skills: {
+  Icon: string;
+  Name: string;
+}[] = [
+  {
+    Icon: "simple-icons:nodedotjs",
+    Name: "Node.js",
+  },
+  {
+    Icon: "simple-icons:typescript",
+    Name: "TypeScript",
+  },
+  {
+    Icon: "simple-icons:html5",
+    Name: "HTML",
+  },
+  {
+    Icon: "simple-icons:css",
+    Name: "CSS",
+  },
+  {
+    Icon: "simple-icons:react",
+    Name: "React",
+  },
+  {
+    Icon: "simple-icons:svelte",
+    Name: "Svelte",
+  },
+  {
+    Icon: "simple-icons:nextdotjs",
+    Name: "Next.js",
+  },
+  {
+    Icon: "simple-icons:express",
+    Name: "Express",
+  },
+  {
+    Icon: "simple-icons:tailwindcss",
+    Name: "Tailwind",
+  },
+  {
+    Icon: "simple-icons:scala",
+    Name: "Scala",
+  },
+  {
+    Icon: "cib:java",
+    Name: "Java",
+  },
+  {
+    Icon: "simple-icons:python",
+    Name: "Python",
+  },
+  {
+    Icon: "simple-icons:go",
+    Name: "Go",
+  },
+  {
+    Icon: "simple-icons:dotnet",
+    Name: "dotnet",
+  },
+  { Icon: "simple-icons:csharp", Name: "C#" },
+  { Icon: "simple-icons:fsharp", Name: "F#" },
+  {
+    Icon: "simple-icons:cplusplus",
+    Name: "C/C++",
+  },
+  {
+    Icon: "simple-icons:haskell",
+    Name: "Haskell",
+  },
+  {
+    Icon: "simple-icons:erlang",
+    Name: "Erlang",
+  },
+
+  {
+    Icon: "simple-icons:ruby",
+    Name: "Ruby",
+  },
+  {
+    Icon: "simple-icons:postgresql",
+    Name: "PostgreSQL",
+  },
+  {
+    Icon: "simple-icons:git",
+    Name: "Git",
+  },
+  {
+    Icon: "simple-icons:docker",
+    Name: "Docker",
+  },
+  {
+    Icon: "simple-icons:linux",
+    Name: "Linux",
+  },
+  {
+    Icon: "simple-icons:vercel",
+    Name: "Vercel",
+  },
+  {
+    Icon: "simple-icons:figma",
+    Name: "Figma",
+  },
+
+  {
+    Icon: "simple-icons:wordpress",
+    Name: "Wordpress",
+  }
+];
+---
+
+<>
+  <p class="text-center mb-1">
+    During university and on project work I have learned a few different
+    technical skills
+  </p>
+  <div class="grid grid-cols-7">
+    {
+      skills.map((skill) => (
+        <div class="flex items-center m-1">
+          <Icon name={skill.Icon} class={"inline-block"} size={"1.5rem"} />
+          <p class="ml-1">{skill.Name}</p>
+        </div>
+      ))
+    }
+  </div>
+</>
