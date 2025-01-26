@@ -104,7 +104,7 @@
       150,
       BlueSkyIcon,
       "https://bsky.app/profile/philipflyvholm.bsky.social",
-      "No way! You're on BlueSky too?"
+      "See what's brewing!"
     )}
     {@render ButtonArm(
       270,
@@ -114,7 +114,8 @@
     )}
     <button
       class="w-10 h-10 transition-colors bg-primary hover:bg-secondary text-secondary hover:text-primary rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-secondary border-4 -rotate-[var(--containerRotation)] text-xs font-bold leading-3"
-      onmouseover={() => (text = rotationVelocity > .5 ? "Yay!" : "Give it ago!")}
+      onmouseover={() =>
+        (text = rotationVelocity > 0.5 ? "Yay!" : "Give it ago!")}
       onfocus={() => (text = "Give it ago!")}
       onmouseleave={resetText}
       onclick={() => {

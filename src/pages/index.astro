@@ -1,30 +1,31 @@
 ---
-import Box from '../components/Box.astro';
-import GithubBox from '../components/Github/GithubBox.astro';
-import LocationBox from '../components/Location/LocationBox.astro';
-import MyInfo from '../components/MyInfo.astro';
-import SkillBox from '../components/SkillBox.astro';
-import ContactBox from '../components/Contact/ContactBox.svelte';
-import Layout from '../layouts/Layout.astro';
+import Box from "../components/Box.astro";
+import GithubBox from "../components/Github/GithubBox.astro";
+import LocationBox from "../components/Location/LocationBox.astro";
+import MyInfo from "../components/MyInfo.astro";
+import SkillBox from "../components/SkillBox.astro";
+import ContactBox from "../components/Contact/ContactBox.svelte";
+import Layout from "../layouts/Layout.astro";
+import ProjectsBox from "../components/Projects/ProjectsBox.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Box padding='p-0' colSpan={2} rowSpan={4} colStart={1} rowStart={1}>
-		<MyInfo />
-	</Box>
-	<Box padding='p-0' rowStart={5} colStart={1} rowSpan={1} colSpan={2}>
-		<LocationBox />
-	</Box>
-	<Box rowStart={6} colStart={1} rowSpan={2} colSpan={2}>
-		Game
-	</Box>
-	<Box colSpan={4} rowSpan={2}>
-		<GithubBox username='philipflyvholm' />
-	</Box>
-	<Box colSpan={4} rowSpan={3}>Projects</Box>
-	<Box colSpan={3} rowSpan={2}><SkillBox/></Box>
-	<Box colSpan={1} rowSpan={2}><ContactBox client:load/></Box>
+  <Box padding="p-0" colSpan={2} rowSpan={4} colStart={1} rowStart={1}>
+    <MyInfo />
+  </Box>
+  <Box padding="p-0" rowStart={5} colStart={1} rowSpan={1} colSpan={2}>
+    <LocationBox />
+  </Box>
+  <Box rowStart={6} colStart={1} rowSpan={2} colSpan={2}> Game </Box>
+  <Box colSpan={4} rowSpan={2}>
+    <GithubBox username="philipflyvholm" />
+  </Box>
+  <Box colSpan={4} rowSpan={3} padding="px-4 py-2">
+    <ProjectsBox />
+  </Box>
+  <Box colSpan={3} rowSpan={2}><SkillBox /></Box>
+  <Box colSpan={1} rowSpan={2}><ContactBox client:load /></Box>
 </Layout>

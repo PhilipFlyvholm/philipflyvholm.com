@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import ProjectsSlider from "./ProjectsSlider.svelte";
+const posts = await getCollection("projects");
+---
+
+<div class="flex h-full">
+  <ProjectsSlider
+    client:load
+    projects={posts
+      .concat(posts)
+      .concat(posts)
+      .concat(posts)
+      .concat(posts)
+      .concat(posts)
+      .concat(posts)
+      .concat(posts)}
+  />
+</div>
