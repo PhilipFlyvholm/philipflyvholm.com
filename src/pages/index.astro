@@ -7,25 +7,52 @@ import SkillBox from "../components/SkillBox.astro";
 import ContactBox from "../components/Contact/ContactBox.svelte";
 import Layout from "../layouts/Layout.astro";
 import ProjectsBox from "../components/Projects/ProjectsBox.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import SnakeCanvas from "../components/Snake/SnakeCanvas.svelte";
+import NokiaPhone from "../components/Snake/NokiaPhone.svelte";
 ---
 
 <Layout>
-  <Box padding="p-0" colSpan={2} rowSpan={4} colStart={1} rowStart={1}>
+  <Box
+    padding="p-0"
+    row="row-span-2 md:row-span-2 lg:row-span-4"
+    col="col-span-full md:col-span-1 lg:col-span-2"
+  >
     <MyInfo />
   </Box>
-  <Box padding="p-0" rowStart={5} colStart={1} rowSpan={1} colSpan={2}>
+  <Box
+    padding="p-0"
+    row="row-span-1 lg:row-start-5"
+    col="md:col-span-1 lg:col-span-2"
+  >
     <LocationBox />
   </Box>
-  <Box rowStart={6} colStart={1} rowSpan={2} colSpan={2}> Game </Box>
-  <Box colSpan={4} rowSpan={2}>
+  <Box
+    row="row-span-1 lg:row-span-2"
+    col="col-span-full md:col-span-2 lg:col-span-4"
+  >
     <GithubBox username="philipflyvholm" />
   </Box>
-  <Box colSpan={4} rowSpan={3} padding="px-4 py-2">
+  <Box
+    padding="px-2 py-2"
+    row="row-span-3 md:row-span-1 md:row-start-1 lg:row-span-3 lg-row-start-auto"
+    col="md:col-start-2 md:col-span-1 lg:col-span-4 lg:col-start-auto"
+  >
     <ProjectsBox />
   </Box>
-  <Box colSpan={3} rowSpan={2}><SkillBox /></Box>
-  <Box colSpan={1} rowSpan={2}><ContactBox client:load /></Box>
+  <Box row="row-span-2" col="md:col-span-2 lg:col-span-3"><SkillBox /></Box>
+  <Box row="lg:row-span-2"><ContactBox client:load /></Box>
+  <Box row="lg:row-start-6 row-span-2" col="lg:col-span-2" computerOnly>
+    <div class="hidden md:block h-full w-full">
+      <SnakeCanvas client:load />
+    </div>
+    <div
+      class="h-full w-full md:hidden flex flex-col justify-center items-center"
+    >
+      <h2>Wanna play snake?</h2>
+      <a
+        class="bg-primary px-5 py-2 rounded-full border-secondary hover:bg-secondary hover:text-light transition-colors border-4 my-3"
+        href="/snake">Play snake</a
+      >
+    </div>
+  </Box>
 </Layout>

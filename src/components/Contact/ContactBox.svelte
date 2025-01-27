@@ -88,7 +88,7 @@
 
 <p class="text-center {text.length > 20 ? 'text-sm leading-4' : ''}">{text}</p>
 <div
-  class="flex items-center justify-center h-full w-full rotate-[var(--containerRotation)] drop-shadow-lg"
+  class="flex items-center justify-center h-full w-full rotate-[var(--containerRotation)] drop-shadow-lg min-h-[200px]"
   style="--containerRotation: {rotation}deg"
 >
   <div

@@ -1,0 +1,62 @@
+{
+  "body_bottomleft": {
+    "x": 0,
+    "y": 0
+  },
+  "body_bottomright": {
+    "x": 1,
+    "y": 0
+  },
+  "body_horizontal": {
+    "x": 2,
+    "y": 0
+  },
+  "body_topleft": {
+    "x": 3,
+    "y": 0
+  },
+  "body_topright": {
+    "x": 0,
+    "y": 1
+  },
+  "body_vertical": {
+    "x": 1,
+    "y": 1
+  },
+  "head_down": {
+    "x": 2,
+    "y": 1
+  },
+  "head_left": {
+    "x": 3,
+    "y": 1
+  },
+  "head_right": {
+    "x": 0,
+    "y": 2
+  },
+  "head_up": {
+    "x": 1,
+    "y": 2
+  },
+  "tail_down": {
+    "x": 2,
+    "y": 2
+  },
+  "tail_left": {
+    "x": 3,
+    "y": 2
+  },
+  "tail_right": {
+    "x": 0,
+    "y": 3
+  },
+  "tail_up": {
+    "x": 1,
+    "y": 3
+  },
+  "apple": {
+    "x": 2,
+    "y": 3
+  }
+}

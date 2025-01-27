@@ -1,0 +1,13 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SnakeCanvas from "../components/Snake/SnakeCanvas.svelte";
+---
+
+<Layout>
+  <div
+    class="bg-primary col-span-full h-full min-h-[90vh]"
+    style={{ gridRow: "1/-1" }}
+  >
+    <SnakeCanvas client:load />
+  </div>
+</Layout>

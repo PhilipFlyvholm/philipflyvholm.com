@@ -4,25 +4,34 @@
   let { projects }: { projects: CollectionEntry<"projects">[] } = $props();
 
   let leftScroll = $state(0);
-  let carousel: HTMLElement;
+  let carousel = $state.raw<HTMLElement>();
+  const showPrevArrow = $derived(leftScroll <= 0);
+  const showNextArrow = $derived(
+    carousel && leftScroll >= carousel?.scrollWidth - carousel?.offsetWidth - 1
+  );
 
   function scrollNext() {
+    if (!carousel) return;
     const scrollAmount = carousel.getBoundingClientRect().width;
 
     carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
   }
 
   function scrollPrev() {
+    if (!carousel) return;
     const scrollAmount = carousel.getBoundingClientRect().width;
     carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
   }
 
   function handleScroll() {
+    if (!carousel) return;
     leftScroll = carousel.scrollLeft;
   }
   $effect(() => {
+    if (!carousel) return;
     carousel.addEventListener("scroll", handleScroll);
     return () => {
+      if (!carousel) return;
       carousel.removeEventListener("scroll", handleScroll);
     };
   });
@@ -55,7 +64,7 @@
 {/snippet}
 
 <button
-  class={`transition-opacity ${leftScroll <= 0 ? "opacity-0 cursor-default" : "opacity-100"}`}
+  class={`transition-opacity ${showPrevArrow ? "opacity-0 cursor-default" : "opacity-100"}`}
   onclick={scrollPrev}>{@render ArrowLeft()}</button
 >
 <div
@@ -68,6 +77,6 @@
 </div>
 
 <button
-  class={`transition-opacity ${leftScroll >= carousel?.scrollWidth - carousel?.offsetWidth - 1 ? "opacity-0 cursor-default" : "opacity-100"}`}
+  class={`transition-opacity px-2 ${showNextArrow ? "opacity-0 cursor-default" : "opacity-100"}`}
   onclick={scrollNext}>{@render ArrowRight()}</button
 >

@@ -4,7 +4,7 @@
 </script>
 
 <div
-  class="bg-accent border-[1px] border-gray rounded-lg h-full min-w-[30%] flex flex-col overflow-hidden snap-center"
+  class="bg-accent border-[1px] border-gray rounded-lg h-full min-w-[100%] lg:min-w-[30%] flex flex-col overflow-hidden snap-center"
 >
   <div class="flex-1 flex flex-col px-2 justify-center">
     <div class="flex-1 pt-1">
