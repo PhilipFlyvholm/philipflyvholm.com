@@ -5,15 +5,5 @@ const posts = await getCollection("projects");
 ---
 
 <div class="flex h-full justify-between">
-  <ProjectsSlider
-    client:load
-    projects={posts
-      .concat(posts)
-      .concat(posts)
-      .concat(posts)
-      .concat(posts)
-      .concat(posts)
-      .concat(posts)
-      .concat(posts)}
-  />
+  <ProjectsSlider client:load projects={posts} />
 </div>
