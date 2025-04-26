@@ -47,7 +47,8 @@
     >
       {#if gameState === "START"}
         <h1 class="text-3xl">Snake Game</h1>
-        <p class="text-center">Use arrow-keys to move</p>
+        <p class="text-center hidden md:block">Use arrow-keys to move</p>
+        <p class="text-center block md:hidden">Swipe to move</p>
         <p>High Score: {highScore}</p>
 
         <button

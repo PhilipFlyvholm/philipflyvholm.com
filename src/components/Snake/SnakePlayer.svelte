@@ -39,7 +39,7 @@
   let { handleGameOver, incrementScore, getGameState, startGame } =
     getContext<GameManagerContext>("gameManager");
   let playerState = $state<PlayerState>(initalPlayerState);
-
+  let cursorPos = $state<Point | undefined>(undefined);
   let nextDir: Dir = "RIGHT";
   let lastMove = 0;
 
@@ -223,6 +223,7 @@
     const { dir } = playerState;
     switch (key) {
       case "ArrowUp":
+        e.preventDefault();
         if (dir !== "DOWN") {
           if (getGameState() == "START" || getGameState() == "GAME_OVER")
             startGame();
@@ -231,6 +232,7 @@
         break;
 
       case "ArrowDown":
+        e.preventDefault();
         if (dir !== "UP") {
           if (getGameState() == "START" || getGameState() == "GAME_OVER")
             startGame();
@@ -239,6 +241,7 @@
         break;
 
       case "ArrowLeft":
+        e.preventDefault();
         if (dir !== "RIGHT") {
           if (getGameState() == "START" || getGameState() == "GAME_OVER")
             startGame();
@@ -247,6 +250,7 @@
         break;
 
       case "ArrowRight":
+        e.preventDefault();
         if (dir !== "LEFT") {
           if (getGameState() == "START" || getGameState() == "GAME_OVER")
             startGame();
@@ -256,15 +260,59 @@
     }
   };
 
+  const handleTouchStart = (e: TouchEvent) => {
+    const touch = e.touches[0];
+    if (!e.target || !(e.target instanceof HTMLElement)) return;
+    if (e.target.tagName !== "CANVAS") return;
+    e.preventDefault();
+    const { clientX, clientY } = touch;
+    cursorPos = { x: clientX, y: clientY };
+  };
+  const handleTouchEnd = (e: TouchEvent) => {
+    const touch = e.changedTouches[0];
+    const { clientX, clientY } = touch;
+    if (!cursorPos) return;
+    const { dir } = playerState;
+    const relX = clientX - cursorPos.x;
+    const relY = clientY - cursorPos.y;
+    if (Math.abs(relX) > Math.abs(relY)) {
+      if (relX > 0) {
+        if (dir !== "LEFT") {
+          nextDir = "RIGHT";
+        }
+      } else {
+        if (dir !== "RIGHT") {
+          nextDir = "LEFT";
+        }
+      }
+    } else {
+      if (relY > 0) {
+        if (dir !== "UP") {
+          nextDir = "DOWN";
+        }
+      } else {
+        if (dir !== "DOWN") {
+          nextDir = "UP";
+        }
+      }
+    }
+    cursorPos = undefined;
+  };
+
   onMount(() => {
     registerUpdate(update);
     registerDraw(draw);
     window.addEventListener("keydown", handleKey);
+    window.addEventListener("touchstart", handleTouchStart);
+
+    window.addEventListener("touchend", handleTouchEnd);
     spawnRandomApple();
     return () => {
       deregisterUpdate(update);
       deregisterDraw(draw);
       window.removeEventListener("keydown", handleKey);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   });
 
