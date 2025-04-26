@@ -113,7 +113,8 @@
       "Check out my code!"
     )}
     <button
-      class="w-10 h-10 transition-colors bg-primary hover:bg-secondary text-secondary hover:text-primary rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-secondary border-4 -rotate-[var(--containerRotation)] text-xs font-bold leading-3"
+      class="w-10 h-10 transition-colors bg-primary hover:bg-secondary text-secondary hover:text-primary rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-secondary border-4 text-xs font-bold leading-3"
+      style="rotate: -{rotation}deg"
       onmouseover={() =>
         (text = rotationVelocity > 0.5 ? "Yay!" : "Give it ago!")}
       onfocus={() => (text = "Give it ago!")}

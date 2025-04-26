@@ -20,7 +20,7 @@
               height={img.height}
               loading="lazy"
               decoding="async"
-              class="w-auto h-5 rounded"
+              class="w-auto h-5 rounded-sm"
             />{/if}
         {/if}
       </div>
@@ -47,7 +47,7 @@
       height={project.data.cover.height}
       loading="lazy"
       decoding="async"
-      class="shadow-md rounded aspect-video"
+      class="shadow-md rounded-sm aspect-video"
     />
   </div>
 </div>

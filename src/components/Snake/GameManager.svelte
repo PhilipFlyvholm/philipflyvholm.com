@@ -43,7 +43,7 @@
   </div>
   {#if gameState !== "PLAYING"}
     <div
-      class="col-start-1 row-start-1 text-center bg-primary bg-opacity-50 h-full flex flex-col items-center justify-center"
+      class="col-start-1 row-start-1 text-center bg-primary/50 h-full flex flex-col items-center justify-center"
     >
       {#if gameState === "START"}
         <h1 class="text-3xl">Snake Game</h1>
