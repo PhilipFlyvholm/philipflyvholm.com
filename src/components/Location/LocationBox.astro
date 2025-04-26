@@ -1,18 +1,14 @@
 ---
 import { getCurrentTime } from "./TimeUtil";
-import { getWeather, getWeatherIcon } from "./WeatherUtil";
-import { Icon } from "astro-icon/components";
-
-const formattedTime = getCurrentTime("Etc/GMT-1");
-const weatherData = await getWeather();
-const weatherIcon = getWeatherIcon(weatherData.weatherCode);
+import Weather from "./Weather.svelte";
+const formattedTime = getCurrentTime("Etc/GMT-2");
 ---
 
-<div class="flex justify-between items-center h-20 lg:h-full">
-  <div class="relative flex-1">
+<div class="flex justify-between h-20 lg:h-full">
+  <div class="relative flex-1 h-20 top-0">
     <img
       src="/cph_map.png"
-      class="min-h-full translate-y-[5%] translate-x-[-5%] relative z-0"
+      class="min-h-full translate-x-[-5%] relative z-0"
       alt=""
     />
     <div
@@ -22,10 +18,9 @@ const weatherIcon = getWeatherIcon(weatherData.weatherCode);
   </div>
   <div class="flex flex-col justify-center m-2 mr-5 text-right items-end">
     <p class="font-bold text-lg">Copenhagen</p>
-    <p><span id="timeBox">{formattedTime}</span> (GMT +1)</p>
+    <p><span id="timeBox">{formattedTime}</span> (GMT +2)</p>
     <p>
-      <Icon name={weatherIcon} class={"inline-block"} size={"1.5rem"} />
-      {Math.round(weatherData.temperature2mMax)} &deg;C
+      <Weather client:only />
     </p>
   </div>
 </div>
@@ -36,7 +31,7 @@ const weatherIcon = getWeatherIcon(weatherData.weatherCode);
   setInterval(() => {
     const timeBox = document.getElementById("timeBox");
     if (!timeBox) return;
-    timeBox.innerText = getCurrentTime("Etc/GMT-1");
+    timeBox.innerText = getCurrentTime("Etc/GMT-2");
   }, 1000);
 </script>
 
