@@ -5,5 +5,15 @@ const posts = await getCollection("projects");
 ---
 
 <div class="flex h-full justify-between">
-  <ProjectsSlider client:load projects={posts} />
+  <ProjectsSlider
+    client:load
+    projects={posts.sort((a, b) => {
+      const aPublished = new Date(a.data.published).getTime();
+      const bPublished = new Date(b.data.published).getTime();
+      if (aPublished === bPublished) {
+        return a.data.title.localeCompare(b.data.title);
+      }
+      return bPublished - aPublished;
+    })}
+  />
 </div>

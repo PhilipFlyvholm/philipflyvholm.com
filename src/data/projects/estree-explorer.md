@@ -1,6 +1,7 @@
 ---
 title: "ESTree Explorer"
 description: "ESTree Explorer is a easy way to visualize and search the ESTree specification without getting a headache."
+published: "4/26/2025"
 cover: "./images/ESTreeExplorer.png"
 coverAlt: "Screenshot of ESTree-explorer."
 links:
